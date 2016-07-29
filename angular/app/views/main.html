@@ -1,0 +1,35 @@
+<div class="pb-40">
+
+  <form name="loginForm" ng-submit="login()">
+    <fieldset>
+
+      <label for="email">email</label>
+      <input type="email" name="email" id="email" ng-model="user.email" required />
+      <span class="error" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+        <small class="text-danger" ng-show="loginForm.email.$error.required">
+          Email is required
+        </small>
+        <small class="text-danger" ng-show="loginForm.email.$error.email">Incorrect email format</small>
+      </span>
+
+      <br>
+
+      <label for="password">password</label>
+      <input type="password" name="password" id="password" ng-model="user.password" ui-validate="{strongPass: '$value.length > 6'}" required />
+      <span class="error" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+        <small class="text-danger" ng-show="loginForm.password.$error.required">
+          password is required
+        </small>
+        <small class="text-danger" ng-show="loginForm.password.$error.strongPass">
+          the password must be at least 8 characters long and must contain at least one digit, one lowercase letter and one uppercase letter
+        </small>
+      </span>
+      <br>
+      {{ loginForm.password.$error }}
+      <br>
+      <input type="submit" class="btn btn-primary" value="login" ng-disabled=" ! loginForm.$valid " />
+
+    </fieldset>
+  </form>
+
+</div>
