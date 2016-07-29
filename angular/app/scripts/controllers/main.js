@@ -29,10 +29,6 @@ angular.module('angularApp')
       }
     };
 
-    $scope.strongPassword = function (value) {
-      console.log('something');
-      return value.length > 6;
-    };
     //api.test/auth"
 
   }]);
