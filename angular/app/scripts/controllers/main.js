@@ -8,7 +8,7 @@
  * Controller of the angularApp
  */
 angular.module('angularApp')
-  .controller('MainCtrl', ['$scope', function ($scope) {
+  .controller('MainCtrl', ['$scope', 'loginProvider', function ($scope, loginProvider) {
 
     $scope.formSubmitted = false;
 
@@ -20,15 +20,14 @@ angular.module('angularApp')
     };
 
     $scope.login = function() {
-      console.log('something');
-      if ( $scope.signup.$valid ) {
+      $scope.response = '';
 
-      }
-      else {
-        $scope.signup.formSubmitted = true;
-      }
+      loginProvider.getResponse( $scope.user )
+      .then( function(data) {
+        $scope.response = data;
+      }, function (err) {
+        console.log(err);
+      });
     };
-
-    //api.test/auth"
 
   }]);
