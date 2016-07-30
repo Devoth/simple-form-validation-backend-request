@@ -18,10 +18,9 @@ angular.module('angularApp')
         url: '//api.test/auth',
         data: credentials
       })
-      .success(function (data) {
+      .then(function (data) {
         deferred.resolve(data);
-      })
-      .error(function (reason) {
+      }, function (reason) {
         deferred.reject(reason);
       });
 
