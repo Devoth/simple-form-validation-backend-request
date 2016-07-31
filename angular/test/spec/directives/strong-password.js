@@ -45,7 +45,7 @@ describe('Directive: strongPassword', function () {
   it('should fail when not containing a lowercase letter', function() {
     form.password.$setViewValue('XXXXX6');
     $scope.$digest();
-    expect( $scope.model.password ).toBeUndefined('XXXXX6');
+    expect( $scope.model.password ).toEqual('XXXXX6');
     expect( form.password.$valid ).toBe(false);
   });
 
