@@ -17,7 +17,11 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+  it('user credentials object should be defined', function() {
+    expect(scope.user).toBeDefined();
+  });
+
+  it('should attach user credentials to the scope', function () {
+    expect(Object.keys(scope.user).length).toBe(2);
   });
 });
