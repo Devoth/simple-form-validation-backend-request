@@ -28,9 +28,9 @@ angular.module('angularApp')
         };
 
         ngModel.$parsers.unshift(function(value) {
-           var valid = isStrongPassword(value);
-           ngModel.$setValidity('strongPassword', valid);
-           return value;
+          var valid = isStrongPassword(value);
+          ngModel.$setValidity('strongPassword', valid);
+          return valid ? value : undefined;
         });
 
       }

@@ -24,28 +24,28 @@ describe('Directive: strongPassword', function () {
   it('should fail with less than 6 characters', function() {
     form.password.$setViewValue('xxxY2');
     $scope.$digest();
-    expect( $scope.model.password ).toEqual('xxxY2');
+    expect( $scope.model.password ).toBeUndefined();
     expect( form.password.$valid ).toBe(false);
   });
 
   it('should fail when not containing a digit', function() {
     form.password.$setViewValue('XXXxxx');
     $scope.$digest();
-    expect( $scope.model.password ).toEqual('XXXxxx');
+    expect( $scope.model.password ).toBeUndefined();
     expect( form.password.$valid ).toBe(false);
   });
 
   it('should fail when not containing an uppercase letter', function() {
     form.password.$setViewValue('xxxxx6');
     $scope.$digest();
-    expect( $scope.model.password ).toEqual('xxxxx6');
+    expect( $scope.model.password ).toBeUndefined();
     expect( form.password.$valid ).toBe(false);
   });
 
   it('should fail when not containing a lowercase letter', function() {
     form.password.$setViewValue('XXXXX6');
     $scope.$digest();
-    expect( $scope.model.password ).toEqual('XXXXX6');
+    expect( $scope.model.password ).toBeUndefined();
     expect( form.password.$valid ).toBe(false);
   });
 
