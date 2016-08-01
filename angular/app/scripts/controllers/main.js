@@ -24,9 +24,11 @@ angular.module('angularApp')
 
       loginProvider.getResponse( $scope.user )
       .then( function(data) {
+        console.log('success', data);
         $scope.response = data;
       }, function (err) {
-        console.log(err);
+        console.log('error', err);
+        $scope.response = err;
       });
     };
 
