@@ -10,6 +10,7 @@
 angular.module('angularApp')
   .controller('MainCtrl', ['$scope', 'loginProvider', function ($scope, loginProvider) {
 
+    $scope.loggedIn = false;
     $scope.formSubmitted = false;
 
     $scope.signup = {};
@@ -25,6 +26,9 @@ angular.module('angularApp')
       loginProvider.getResponse( $scope.user )
       .then( function(data) {
         console.log('success', data);
+        if (data.status === 201) {
+          $scope.loggedIn = true;
+        }
         $scope.response = data;
       }, function (err) {
         console.log('error', err);
